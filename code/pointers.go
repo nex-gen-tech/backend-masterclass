@@ -1,4 +1,4 @@
-// package main
+package code
 
 // type Person struct {
 // 	ID   int
