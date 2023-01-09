@@ -1,44 +1,39 @@
-// package main
+package main
 
-// type Person struct {
-// 	ID   int
-// 	Name string
-// 	Age  bool
-// }
+type Namer interface {
+	GetFullName() string
+	SetAge(age int) error
+	GetAge() int
+}
 
-// func (p *Person) SetName(name string) {
-// 	p.Name = name
-// }
+type person struct {
+	FirstName string
+	LastName  string
+	Age       int
+}
 
-// func (p *Person) SetAge(age bool) {
-// 	p.Age = age
-// }
+func NewPerson(firstName, lastName string, age int) Namer {
+	return &person{
+		FirstName: firstName,
+		LastName:  lastName,
+	}
+}
 
-// func ChangeName(p *Person, name string) {
-// 	p.Name = name
-// }
+// GetFullName returns the full name of the person
+func (p person) GetFullName() string {
+	return p.FirstName + " " + p.LastName
+}
 
-// func main() {
-// 	P := Person{ID: 1}
+// // SetAge sets the age of the person
+func (p *person) SetAge(age int) error {
+	p.Age = age
+	return nil
+}
 
-// 	P.SetName("John")
-// 	P.SetAge(true)
+// // GetAge -
+func (p person) GetAge() int {
+	return p.Age
+}
 
-// 	println(P.Name)
-// 	println(P.Age)
-// 	println(P.ID)
-
-// 	ChangeName(&P, "Doe")
-// }
-
-// func main() {
-// 	val := 1
-// 	println(val)
-
-// 	valAdd := &val
-// 	println(valAdd)
-
-// 	*valAdd = 2
-// 	println(valAdd)
-// 	println(*valAdd)
-// }
+func main() {
+}
